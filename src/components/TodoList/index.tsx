@@ -1,5 +1,10 @@
 import TodoItem from "../TodoItem";
 import { Todo } from "@/utils/types";
+import styled from "styled-components"
+
+const StyledUl = styled.ul`
+    color: hsl(200, 29%, 90%);
+`
 
 type TodoListProps = {
     todo: Todo[];
@@ -9,6 +14,7 @@ type TodoListProps = {
 
 const TodoList = ({todo, toggleTodo, deleteTodo}:TodoListProps) => {
     return (
+        <StyledUl>
         <ul>
             {todo.length === 0 && "No Todos"}
             {todo.map(todo => {
@@ -22,6 +28,7 @@ const TodoList = ({todo, toggleTodo, deleteTodo}:TodoListProps) => {
                 )
             })}
         </ul>
+        </StyledUl>
     )
 }
 

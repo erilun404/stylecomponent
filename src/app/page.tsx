@@ -4,6 +4,26 @@ import { Todo } from "@/utils/types";
 import {v4 as uuid} from 'uuid';
 import TodoList from "@/components/TodoList";
 import NewTodoTask from "@/components/NewTodoTask";
+import styled, {createGlobalStyle} from "styled-components";
+//import globalStyle from "@/styles/globalstyle";
+import Header from "@/components/HeaderTodo";
+
+const StyledMain = styled.main`
+  align-items: center;
+`
+const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: #4b5267;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+  }
+`;
+
+
 
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -36,10 +56,12 @@ export default function Home() {
 
   return (
     <>
-     <NewTodoTask addTodo={addTodos}/>
-     <TodoList todo={todos} toggleTodo={toggleTodos} deleteTodo={deleteTodo}/>
+    <GlobalStyle/>
+    <StyledMain >
+    <Header/>
+    <NewTodoTask addTodo={addTodos}/>
+    <TodoList todo={todos} toggleTodo={toggleTodos} deleteTodo={deleteTodo}/>
+    </StyledMain>
     </>
-   
-  
   );
 }
