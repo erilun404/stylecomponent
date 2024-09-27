@@ -48,7 +48,6 @@ const TodoItem = ({completed, id, title, toggleTodo, deleteTodo}:TodoItemProps) 
             <button onClick={() => deleteTodo(id)}>Delete</button>
         {/* </li> */}
         </StyledTodoItem>
-    
     )
 }
 

@@ -23,8 +23,6 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-
-
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);
 
