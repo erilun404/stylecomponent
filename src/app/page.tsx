@@ -28,7 +28,7 @@ export default function Home() {
 
   const addTodos = (title: any) => {
     setTodos((currentTodos) => {
-      return [...currentTodos, { id: uuid(), title, done: false }];
+      return [...currentTodos, { id: uuid(), title, completed: false }];
     });
   };
 
@@ -36,7 +36,7 @@ export default function Home() {
     setTodos((currentTodos) => {
       return currentTodos.map((todos) => {
         if (todos.id === id) {
-          return { ...todos, done: completed };
+          return { ...todos, completed };
         }
         return todos;
       });
