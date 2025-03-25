@@ -5,7 +5,6 @@ import { v4 as uuid } from "uuid";
 import TodoList from "@/components/TodoList";
 import NewTodoTask from "@/components/NewTodoTask";
 import styled, { createGlobalStyle } from "styled-components";
-//import globalStyle from "@/styles/globalstyle";
 import Header from "@/components/HeaderTodo";
 
 const StyledMain = styled.main`
