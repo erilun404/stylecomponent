@@ -24,30 +24,19 @@ const GlobalStyle = createGlobalStyle`
 
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [updated, setUpdated] = useState<boolean>(false);
 
   useEffect(() => {
-    if (todos.length === 0) {
+    if (todos.length === 0 && !updated) {
       const storedTodos = localStorage.getItem("todos");
       if (storedTodos) {
         setTodos(JSON.parse(storedTodos));
       }
+      setUpdated(true);
       return;
     }
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
-
-  // useEffect(() => {
-  //   const storedTodos = localStorage.getItem("todos");
-  //   if (storedTodos) {
-  //     setTodos(JSON.parse(storedTodos));
-  //   }
-  //   console.log("Todos added:", todos);
-  // }, []);
-
-  // useEffect(() => {
-  //   localStorage.setItem("todos", JSON.stringify(todos));
-  //   console.log("Todos updated:", todos);
-  // }, [todos]);
 
   const addTodos = (title: any) => {
     setTodos([...todos, { id: uuid(), title, completed: false }]);
@@ -56,7 +45,7 @@ export default function Home() {
 
   const toggleTodos = (id: string, completed: boolean) => {
     setTodos((currentTodos) => {
-      return currentTodos!.map((todos) => {
+      return currentTodos.map((todos) => {
         if (todos.id === id) {
           return { ...todos, completed };
         }
@@ -67,7 +56,7 @@ export default function Home() {
 
   const deleteTodo = (id: string) => {
     setTodos((currentTodos) => {
-      return currentTodos!.filter((todos) => todos.id !== id);
+      return currentTodos.filter((todos) => todos.id !== id);
     });
   };
 
