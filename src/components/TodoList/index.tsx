@@ -1,6 +1,7 @@
 import TodoItem from "../TodoItem";
 import { Todo } from "@/utils/types";
 import styled from "styled-components";
+import { useEffect, useState } from "react";
 
 const StyledUl = styled.ul`
   color: hsl(200, 29%, 90%);
